@@ -1,0 +1,28 @@
+html, body, .todo {
+    width: 700px;
+    font-size: 20px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+ul {
+    list-style: none;
+}
+
+ul>li:hover {
+    background-color: #F5F5F5;
+}
+
+.todo {
+    list-style-type: none;
+}
+
+.todo__input, .todo__item {
+    margin: 0px;
+}
+
+.todo__item--done {
+    color: red;
+    text-decoration: line-through;
+}
+
