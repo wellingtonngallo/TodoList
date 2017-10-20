@@ -1,8 +1,13 @@
 html, body, .todo {
-    width: 700px;
+    width: 100%;
     font-size: 20px;
     margin: 0 auto;
     text-align: left;
+}
+
+#app{
+    width: 600px;
+    margin: 0 auto;
 }
 
 ul {
@@ -26,3 +31,9 @@ ul>li:hover {
     text-decoration: line-through;
 }
 
+#formList{
+    padding: 10px 0px;
+}
+#todoInput{
+    width: 550px;
+}

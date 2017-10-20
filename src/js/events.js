@@ -12,7 +12,13 @@ export function registerEventHandlers() {
         event.stopPropagation();
     });
 
+    listen('click', '#filter', event => {
+
+        todos.dispatch(todoCheck());
+    });
+
     listen('click', '.js_toggle_todo', event => {
+        
         const id = Number.parseInt(event.target.getAttribute('data-id'), 10);
         todos.dispatch(toggleTodoState(id));
     });

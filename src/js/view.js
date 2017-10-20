@@ -3,18 +3,21 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 
-
 export function render(el, state) {
     var todoItems = [];
     if(state.todos){
         todoItems = Array.prototype.map.call(state.todos, renderTodoItem).join('');
     }
     
-    /*const todosDone = state.todos.filter(item => item.done);
-    todoItems = Array.prototype.map.call(todosDone, renderTodoItem).join('');
-    
-    const todosNotDone = state.todos.filter(item => !item.done);
-    todoItems = Array.prototype.map.call(todosNotDone, renderTodoItem).join('');*/
+    if(isEnabled('filterDone')){
+        const todosDone = state.todos.filter(item => item.done);
+        todoItems = Array.prototype.map.call(todosDone, renderTodoItem).join('');
+    }
+
+    if(isEnabled('filterNotDone')){
+        const todosNotDone = state.todos.filter(item => !item.done);
+        todoItems = Array.prototype.map.call(todosNotDone, renderTodoItem).join('');
+    }
     
     el.innerHTML = renderApp(
         renderInput(),
@@ -32,7 +35,7 @@ function renderApp(input, todoList) {
 
 function renderAddTodoAtTop(input, todoList) {
     return `<div id="app">
-                <h1>ToDo List</h1>
+                <h3>ToDo List</h3>
                 ${input}
                 ${todoList}
             </div>`;
@@ -48,7 +51,7 @@ function renderAddTodoAtBottom(input, todoList) {
 function renderInput() {
     return `<form action="#" id="formList" class="form-inline">
                 <div class="input-group input-group-sm">
-                    <input type="text" id="todoInput" class="form-control" />
+                    <input type="text" id="todoInput" class="form-control" placeHolder="Digite sua tarefa..." />
                     <span class="input-group-btn">
                         <button id="addTodo" class="btn btn-primary">Add</button>
                     </span>
@@ -63,9 +66,15 @@ function renderTodos(todoItems) {
 
 function renderTodoItem(todo) {
 
+    const statusLabel = todo.done ? '<span class="badge badge-success">Finalizada</span>' : '<span class="badge badge-primary">Em aberto</span>';
     const todoClass = `todo__item todo__item--${todo.done ? 'done' : 'open'}`;
     return `<li class="${todoClass} list-group-item">
-        <input class="js_toggle_todo" type="checkbox" data-id="${todo.id}"${todo.done ? ' checked' : ''} />
-        ${todo.text}
-    </li>`;
+                <div class="d-flex w-100 justify-content-between">
+                    <h7 class="mb-1">
+                        <input class="mb-1 js_toggle_todo" type="checkbox" data-id="${todo.id}"${todo.done ? ' checked' : ''} />
+                        ${todo.text}
+                    </h7>
+                    <small>${statusLabel}</small>
+                </div>
+            </li>`;
 }

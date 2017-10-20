@@ -32,6 +32,7 @@ function todoChangeHandler(state, change) {
             })
 
             localStorage.setItem("state", JSON.stringify(state.todos));
+
             break;
     }
 }
