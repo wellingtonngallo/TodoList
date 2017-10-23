@@ -1,21 +1,44 @@
 import {todos} from './state';
-import {listen} from './lib/events';
+import {listen, setStorage, setUrl} from './lib/events';
 import {addTodo, toggleTodoState} from './actions';
 
 export function registerEventHandlers() {
     
-    listen('click', '#addTodo', event => {
-        const todoInput = document.getElementById('todoInput');
-        todos.dispatch(addTodo(todoInput.value));
-        document.getElementById('todoInput').focus();
-        
-        event.stopPropagation();
+    listen('submit', '#formList', event => {
+
+        event.preventDefault();
+
+        const todoInput = document.getElementById('todoInput').value;
+
+        if(todoInput != ""){
+            todos.dispatch(addTodo(todoInput));
+            document.getElementById('todoInput').focus();
+            
+            event.stopPropagation();
+        }
     });
 
-    listen('click', '#filter', event => {
+    listen('change', '#filter', event => {
 
-        todos.dispatch(todoCheck());
+        var filter = document.getElementById('filter').value;
+        setStorage(filter);
+        setUrl("");
     });
+
+    listen('change', '#filterNotDone', event => {
+
+        var filter = document.getElementById('filterNotDone').value;
+        setStorage(filter);
+        setUrl("#filterNotDone");
+    });
+
+    listen('change', '#filterDone', event => {
+
+        var filter = document.getElementById('filterDone').value;
+        setStorage(filter);
+        setUrl("#filterDone");
+    });
+
 
     listen('click', '.js_toggle_todo', event => {
         

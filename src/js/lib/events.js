@@ -5,3 +5,12 @@ export function listen(eventName, selector, handler) {
         }
     });
 }
+
+export function setStorage(typeFilter){
+    localStorage.setItem("checked", typeFilter);
+}
+
+export function setUrl(url){
+    parent.location.hash = url;
+    location.reload(); 
+}

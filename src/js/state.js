@@ -1,5 +1,6 @@
 import {createStore} from './lib/state';
 
+
 var storage = JSON.parse(localStorage.getItem('state'));
 
 if(storage == null){
