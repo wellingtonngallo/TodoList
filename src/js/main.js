@@ -1,5 +1,4 @@
 import '../css/main.css';
-
 import '../css/bootstrap.min.css';
 
 import {todos} from './state';

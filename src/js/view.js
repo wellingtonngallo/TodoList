@@ -19,6 +19,7 @@ export function render(el, state) {
         localStorage.setItem("checked", 1);
         const todosNotDone = state.todos.filter(item => !item.done);
         todoItems = Array.prototype.map.call(todosNotDone, renderTodoItem).join('');
+
     }
     
     el.innerHTML = renderApp(
@@ -29,10 +30,11 @@ export function render(el, state) {
 }
 
 function renderApp(input, todoList, checkbox) {
-    if(isEnabled('renderBottom')) {
-        return renderAddTodoAtBottom(input, todoList, checkbox);
-        }else if(isEnabled('renderButton') && (isEnabled('filterDone') || isEnabled('filterNotDone')) && isEnabled('filterTop')){
-            return renderAppFilterTop(input, todoList, checkbox);
+    
+    if(isEnabled('renderBottom') & (isEnabled('filterDone') || isEnabled('filterNotDone')) & isEnabled('filterTop')){
+        return renderAppFilterTop(input, todoList, checkbox);
+        }else if(isEnabled('renderBottom')) {
+            return renderAddTodoAtBottom(input, todoList, checkbox);
         }else{
             return renderAddTodoAtTop(input, todoList, checkbox);
         }
@@ -59,9 +61,9 @@ function renderAddTodoAtTop(input, todoList, chebox) {
 function renderAddTodoAtBottom(input, todoList, chebox) {
     return `<div id="app">
                 <h3>ToDo List</h3>
-                ${chebox}
                 ${todoList}
                 ${input}
+                ${chebox}
             </div>`;
 }
 
@@ -71,17 +73,17 @@ function renderCheckbox(){
     return `Exibir somente:&nbsp;
             <div class="form-check form-check-inline">
                 <label class="form-check-label">
-                    <input class="form-check-input" type="radio" name="filter" id="filter" value="0" ${getStorage == 0 || getStorage == null ? 'checked' : ''}>Todos
+                    <input class="form-check-input" type="radio" name="filter" id="filter" value="0" ${getStorage == 0 || getStorage == null ? 'checked' : ''}>Todos 
                 </label>
             </div>
             <div class="form-check form-check-inline">
                 <label class="form-check-label">
-                    <input class="form-check-input" type="radio" name="filter" id="filterNotDone" value="1" ${getStorage == 1 ? 'checked' : ''}> Abertos
+                    <input class="form-check-input" type="radio" name="filter" id="filterNotDone" value="1" ${getStorage == 1 ? 'checked' : ''}>Em aberto
                 </label>
             </div>
             <div class="form-check form-check-inline">
                 <label class="form-check-label">
-                    <input class="form-check-input" type="radio" name="filter" id="filterDone" value="2" ${getStorage == 2 ? 'checked' : ''}> Fechados
+                    <input class="form-check-input" type="radio" name="filter" id="filterDone" value="2" ${getStorage == 2 ? 'checked' : ''}>Finalizada
                 </label>
             </div>`;
 }

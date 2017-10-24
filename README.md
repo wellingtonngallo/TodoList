@@ -86,13 +86,9 @@ manter as alterações que fez, e explicar o motivo de não terminá-la ou o que
 
 ### WEB-101: Suportar a tecla ENTER no input para adicionar um TODO item
 
-@FEITO
-
 Nós gostaríamos de poder adicionar um todo item, usando a tecla `enter`.
 
 ### WEB-102: Adicionar um todo item causa perca de foco no text field
-
-@FEITO
 
 Como nós habilitamos a tecla `enter` para adicionar um todo item, nossos usuários
 notaram que ao adicionar, o text field perde o foco e eles precisam clicar manualmente no input
@@ -101,8 +97,6 @@ para voltar o foco para ele.
 Por favor, garanta que ao adicionar um todo item, o foco irá voltar (ou manter-se) ao text field.
 
 ### WEB-103: Adicione um filtro de status como TESTE
-
-@FEITO PORÉM FALTA CRIAR OS BOTÕES
 
 Como um usuário, eu quero ter uma opção para esconder itens que não me interessam
 baseado nos seus status.
@@ -135,8 +129,6 @@ estão ativos também. A hash da URL deve estar mais ou menos assim "index.html#
 
 ### WEB-110: Melhore a aparência visual da aplicação
 
-@FEITO
-
 Nosso departamento de design acredita que o design atual não é o melhor e pode ser melhorado. 
 
 Por favor, melhore esta experiência para o usuário. Sinta-se livre para usar seu próprio design,
@@ -149,8 +141,6 @@ Usar CSS puro, também não é um problema. Faça como achar melhor.
 
 ### WEB-120: Salve a lista de todo items
 
-@FEITO
-
 Nós gostaríamos agora, que a aplicação salvasse os todo items que o usuário adicionar.
 Assim quando ele atualizar a página, sua lista estará intacta e não irá perder nada.
 
@@ -162,8 +152,6 @@ iremos ligá-la para revisar e nos envies os fontes também.
 
 ### WEB-201: Extraia o CSS em um arquivo separado
 
-@FEITO
-
 Atualmente, o CSS da aplicação está incluído no `bundle.js`.
 Entretanto, nossos usuários começaram a comentar sobre a aplicação estar
 sem nenhum estilo quando inicia, e nós gostaríamos então de separar o CSS em outro arquivo.
@@ -173,7 +161,6 @@ e carregue o arquivo CSS separamente do bundle javascript.
 
 ### WEB-202: Otimize a geração do bundle
 
-@FEITO
 Atualmente nosso bundle gerado não está otimizado e está um pouco grande para uma 
 aplicação pequena. Por favor, ajuste as configurações do webpack para que possamos
 criar um bundle otimizado ao invés do bundle grande. Seria ideal se tanto Javascript
@@ -222,8 +209,6 @@ Por favor, crie um plugin babel que pode alterar estaticamente o código `isEnab
 Dica: Provavelmente você pode criar um webpack loader para isso.
 
 ### WEB-303: Melhore a experiência do desenvolvedor
-
-@FEITO
 
 Nós fomos informados que nossos desenvolvedores não estão sendo tão produtivos quanto
 poderiam e precisam constantemente atualizar a página e esperar o webpack watcher acabar
